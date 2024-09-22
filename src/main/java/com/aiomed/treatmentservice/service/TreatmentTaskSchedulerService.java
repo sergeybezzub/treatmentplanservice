@@ -28,6 +28,15 @@ public class TreatmentTaskSchedulerService {
     TreatmentPlanRepository treatmentPlanRepository;
 
     @Transactional
+    public int activateNewPlans() {
+        List<TreatmentPlan> newPlans = treatmentPlanRepository.findCreatedPlans();
+        int newTasksAmount =0;
+        for(TreatmentPlan plan : newPlans) {
+            newTasksAmount += createTreatmentTasks(plan).size();
+        }
+        return newTasksAmount;
+    }
+    @Transactional
     public List<TreatmentTask> createTreatmentTasks(TreatmentPlan plan) {
         TreatmentAction action = plan.getTreatmentAction();
         String patient = plan.getSubjectPatient();
