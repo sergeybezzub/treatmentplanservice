@@ -1,5 +1,4 @@
-## Treatments sheduler (Test task)
-
+## Treatments sheduler
 
 1. Following logic has been implemented in service `com.aiomed.treatmentservice.service.TreatmentTaskSchedulerService`
 - Finds TreatmentPlan records with CREATED status in database
